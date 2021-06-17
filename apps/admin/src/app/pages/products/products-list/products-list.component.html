@@ -1,0 +1,70 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card header="Products" subheader="List of all products">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <p-button
+              styleClass="p-button-success"
+              label="New"
+              icon="pi pi-plus"
+              routerLink="form"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-col-12">
+        <!--[value]="products" 對應到TS: products = [];-->
+        <!--[paginator]="true" [rows]="10": primeNG 提供, 可以顯示分頁且規定一頁幾筆資料-->
+        <p-table [paginator]="true" [rows]="10" [value]="products" styleClass="p-datatable-gridlines">
+          <!--顯示表格標題-->
+          <ng-template pTemplate="header">
+            <tr>
+              <!--pSortableColumn="name" 開啟PrimeNG可以排序的功能, <p-sortIcon field="name"></p-sortIcon>:顯示排序功能之按鈕-->
+              <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+              <th>Image</th>
+              <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+              <th pSortableColumn="stock">Stock <p-sortIcon field="stock"></p-sortIcon></th>
+              <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+              <th pSortableColumn="created">Created at <p-sortIcon field="created"></p-sortIcon></th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <!--let-product 遶行顯示表格資料, product 為遶行元素去遶行上面的 products-->
+          <ng-template pTemplate="body" let-product>
+            <tr>
+              <td>{{ product.name }}</td>
+              <!--使用 property binding-->
+              <!--product.image這裡面存的是放在後端的public/upload 路徑, style="width: 100%" 是讓圖檔符合欄位大小-->
+              <td><img [src]="product.image" style="width: 100%" alt="" /></td>
+              <td>{{ product.price }}</td>
+              <td>{{ product.countInStock }}</td>
+              <td>{{ product.category.name }}</td>
+              <td>{{ product.dateCreated | date:'short' }}</td>
+              <td>
+                <p-button
+                  (click)="deleteProduct(product.id)"
+                  styleClass="p-button-danger p-mr-2"
+                  icon="pi pi-trash"
+                ></p-button>
+                <p-button
+                  (click)="updateProduct(product.id)"
+                  styleClass="p-button-success"
+                  icon="pi pi-pencil"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>

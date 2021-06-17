@@ -1,0 +1,75 @@
+.banner{
+    height: 200px;
+    width: 100%;
+    background-color: #D7EFFB;
+    border-radius: 15px;
+
+    @include respond(phone){
+      height: 80px;
+      max-width: 300px;
+      background-color: #D7EFFB;
+      border-radius: 15px;
+      margin: auto auto;
+    }
+
+    &-text {
+        color: var(--surface-700);
+        margin-top: 50px;
+
+        @include respond(phone){
+          margin-top: 10px;
+        }
+    
+        h1 {
+          margin: 0;
+          font-size: 3em;
+          font-weight: 400;
+
+          @include respond(phone){
+             font-size: 10px;
+          }
+        }
+    
+        h2 {
+          margin: 0;
+          font-size: 2em;
+          font-weight: 300;
+
+          @include respond(phone){
+            font-size: 8px;
+         }
+        }
+    }
+
+    &-image {
+        padding: 15px 0 0 0;
+        text-align: center;
+    
+        img {
+          width: 300px;
+
+          @include respond(phone){
+            max-width: 30%;
+          }
+        }
+    }
+
+    &-button {
+        background-color: var(--surface-0);
+        color: $primary-color;
+        border: 0;
+        border-radius: 13px;
+        height: 50px;
+        
+        &:enabled:hover {
+          background-color: var(--surface-0);
+          color: $primary-color;
+          border: 0;
+        }
+
+        @include respond(phone){
+          display: none;
+        }
+      }
+    
+}

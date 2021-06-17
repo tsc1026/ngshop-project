@@ -1,0 +1,60 @@
+header{
+    .p-grid{
+        @include respond(phone){
+            max-width: 300px;
+        } 
+    }
+
+    margin-bottom: 25px;
+    @include respond(phone){
+        margin-bottom: 10px;
+    }
+
+    .p-col-3{
+        max-width: 150px;
+    }
+
+    .logo{
+        @include respond(phone){
+            max-width: 150px;
+        }
+
+        img{
+            width: 160px; 
+            @include respond(phone){
+                max-width: 100%;
+            }
+        }
+    }
+
+
+    .search{
+        padding-top: 25px;
+        margin-left: 20px;
+        @include respond(phone){
+            display: none;
+        }
+    }
+
+    .navigation{
+        padding-top: 25px;
+        margin-left: 200px;
+
+        @include respond(phone){
+            display: flex;
+            left: 150px;
+        }
+    }
+
+    .tools{
+        padding-top: 35px; 
+        margin-left: 250px;
+        .pi{
+            margin-right: 10px;
+        }
+
+        .userName{
+            margin-right: 10px;
+        }
+    }
+}

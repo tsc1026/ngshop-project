@@ -1,0 +1,27 @@
+.nav{
+    
+    @include respond(phone){
+        display: flex;
+    }
+
+    li{
+        list-style: none;
+        display: inline;
+        margin-right: 15px;
+        
+        
+        @include respond(phone){
+            margin-right: 10px;
+            justify-content: end;
+        }
+
+
+        a{
+            color: var(--surface-500);
+            cursor: pointer;
+            &:hover{
+                color: $primary-color; 
+            }
+        }
+    }
+}
